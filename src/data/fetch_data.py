@@ -38,7 +38,7 @@ json_template = {
   }
 }
 
-
+# Get CSV Data
 response = requests.get(url)
 
 if response.status_code == 200:
@@ -46,10 +46,20 @@ if response.status_code == 200:
         for chunk in response:
             file.write(chunk)
             
+
+# Convert to DataFrame
 df = pd.read_csv('./us_state_vaccinations.csv')
 
-grouped_by_state = df.groupby('location')
 
+# Get States List as JSON
+states_list = list(set(df[df['location'].notna()]['location'].tolist()))
+
+with open('states_list.json', 'w') as state_list_file:
+    state_list_file.write(json.dumps(states_list, indent=4))
+    
+
+# Get state-wise stats as JSONs
+grouped_by_state = df.groupby('location')
 
 for state in grouped_by_state['location']:
     state = state[0]
