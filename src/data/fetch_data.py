@@ -25,6 +25,9 @@ json_template = {
   "options": {
       
       "scales": {
+          "x": {
+              "type": "timeseries"
+          },
           "yAxes": [{
               "ticks": {
                   "beginAtZero": True

@@ -124,6 +124,9 @@
     },
     "options": {
         "scales": {
+            "x": {
+                "type": "timeseries"
+            },
             "yAxes": [
                 {
                     "ticks": {
