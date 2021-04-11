@@ -2,6 +2,7 @@ import csv
 import requests
 import pandas as pd
 import json
+from datetime import datetime
 
 csv_filename = './us_state_vaccinations.csv'
 
@@ -57,7 +58,7 @@ for state in grouped_by_state['location']:
     state_df = state_df[state_df['people_fully_vaccinated_per_hundred'].notna()]
     
     state_json = json_template
-    state_json['data']['labels'] = state_df['date'].tolist()
+    state_json['data']['labels'] = [datetime.strptime(s, '%Y-%m-%d').strftime('%b %d') for s in state_df['date'].tolist()]
     state_json['data']['datasets'][0]['data'] = state_df['people_fully_vaccinated_per_hundred'].tolist()
     
     with open(state + '.json', 'w') as state_json_file:
