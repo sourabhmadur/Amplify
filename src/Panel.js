@@ -14,8 +14,9 @@ class Panel extends Component{
 
     componentDidMount(props){
         var ctx = document.getElementById(this.props.name).getContext('2d');
-        this.setState({data: require('./data/'+this.props.currentState +'.json')});
-        this.setState({chart : new Chart(ctx, this.state.data)});
+        const defaultData=require('./data/'+this.props.currentState +'.json');
+        this.setState({data: defaultData});
+        this.setState({chart : new Chart(ctx, defaultData)});
     }
 
     componentDidUpdate(prevProps) {
