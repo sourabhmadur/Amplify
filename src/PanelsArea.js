@@ -11,8 +11,8 @@ class PanelsArea extends Component {
     constructor(props){
       super(props);
 
-
       const states = require('./data/states_list.json');
+      states.sort();
       const defaultState = states[0];
 
       const countries = ['United States'];
@@ -31,7 +31,7 @@ class PanelsArea extends Component {
 
 
       _onSelectState (option) {
-        // console.log('You selected ', option.label)
+        console.log('You selected ', option.label)
         this.setState({currentState: option.label})
         // console.log('current state ', this.state.currentState)
         // const selectedStateData = require('./data/'+this.state.currentState +'.json');

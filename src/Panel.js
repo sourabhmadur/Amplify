@@ -24,12 +24,14 @@ class Panel extends Component{
             if(!equal(this.props.currentState, prevProps.currentState)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
         {
             var ctx = document.getElementById(this.props.name).getContext('2d');
-            this.setState({data: require('./data/'+this.props.currentState +'.json')});
+            console.log("current props:",this.props.currentState);
+            const dataToRender = require('./data/'+this.props.currentState +'.json')
+            this.setState({data: dataToRender});
             if(this.state.chart){
                 this.state.chart.destroy();
             }
-
-            this.setState({chart : new Chart(ctx, this.state.data)});
+            
+            this.setState({chart : new Chart(ctx, dataToRender)});
         }
 
         } catch {
