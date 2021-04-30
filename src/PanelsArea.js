@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import Panel from './Panel'
 
+import TextPanel from './TextPanel'
+
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
@@ -61,6 +63,7 @@ class PanelsArea extends Component {
         </div>
         
         <Panel currentState={this.state.currentState} name="numvaccinated"/>
+        <TextPanel currentState={this.state.currentState} name="numvaccinated"/>
         {/* <Panel data={data} name="numvaccinatesd"/>
         <Panel data={data} name="numvaccinatssesd"/> */}
           {/* <td><Panel data={data} name="numvaccinated"/></td> */}
